@@ -13,7 +13,7 @@ futaba.php v0.8 lot.051031
 所望のディレクトリのパーミッションを777にします。
 srcディレクトリとthumbディレクトリを作り、パーミッションを777にします。<br>
 futaba.phpを置き、ブラウザから呼出します(必要なファイルが自動設定されます)。
-
+Additional note from the original file: As stated in Japanese, this is a modified version of a modified version of a modified version of a file distributed on the Let's PHP site. Modified three times? You've got to be kidding me! Also, you should probably include a link to Let's PHP. Otherwise, you'll regret it. That is, if the Let's PHP admin is still actually looking at the Let's PHP site lol
 
 */
 header("Cache-Control:no-cache,no-store,must-revalidate,max-age=0");
