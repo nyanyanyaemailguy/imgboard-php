@@ -37,7 +37,7 @@ define("MAX_W",  '250');			//投稿サイズ幅（これ以上はwidthを縮小
 define("MAX_H",  '250');			//投稿サイズ高さ
 define("PAGE_DEF", '5');			//一ページに表示する記事
 define("LOG_MAX",  '500');		//ログ最大行数
-define("ADMIN_PASS", 'admin_pass');	//管理者パス
+define("ADMIN_PASS", 'admin');	//管理者パス
 define("RE_COL", '789922');               //＞が付いた時の色
 define("PHP_SELF", 'mituba.php');	//このスクリプト名
 define("PHP_SELF2", 'mituba.htm');	//入り口ファイル名
@@ -150,10 +150,7 @@ function form(&$dat, $resno, $admin = "") {
   $no = $resno;
   if($resno){
     $msg .= "[<a href=\"".PHP_SELF2."\">back</a>]\n";
-    $msg .= "<table width='100%'><tr><th bgcolor=#e04000>\n";
-    $msg .= "<font color=#FFFFFF>Reply Mode</font>\n";
-    $msg .= "</th></tr></table>\n";
-  }
+   }
   if($admin){
     $hidden = "<input type=hidden name=admin value=\"".ADMIN_PASS."\">";
     $msg = "<h4>Tags can be used.</h4>";
@@ -171,11 +168,11 @@ $dat.='<table cellpadding=1 cellspacing=1>
 <tr><td bgcolor=#eeaa88><b>name</b></td><td><input type=text name=name size="28"></td></tr>
 <tr><td bgcolor=#eeaa88><b>E-mail</b></td><td><input type=text name=email size="28"></td></tr>
 <tr>
-  <td bgcolor=#eeaa88><b>title</b></td>
+  <td bgcolor=#eeaa88><b>subject</b></td>
   <td>
     <input type=text name=sub size="35">
     '.(reCAPTCHA_SITE_KEY == '' ?
-    '<button type="submit">post</button>' :
+    '<button type="submit">New topic</button>' :
     '<button type="submit" class="g-recaptcha" data-sitekey="'.reCAPTCHA_SITE_KEY.'" data-callback="onSubmit" data-action="submit">post</button>').'
   </td></tr>
 <tr><td bgcolor=#eeaa88><b>comment</b></td><td><textarea name=com cols="48" rows="4" wrap=soft></textarea></td></tr>
@@ -183,9 +180,9 @@ $dat.='<table cellpadding=1 cellspacing=1>
 if(RESIMG || !$resno){
 $dat.='<tr><td bgcolor=#eeaa88><b>image</b></td>
 <td><input type=file name=upfile size="35">
-[<label><input type=checkbox name=textonly value=on>no image</label>]</td></tr>
+[<label><input type=checkbox name=textonly value=on>No image</label>]</td></tr>
 ';}
-$dat.='<tr><td bgcolor=#eeaa88><b>delate key</b></td><td><input type=text name=pwd size=8 maxlength=8 value=""><small>(For article deletion. Alphanumeric characters, 8 characters or fewer)</small></td></tr>
+$dat.='<tr><td bgcolor=#eeaa88><b>delate key</b></td><td><input type=text name=pwd size=8 maxlength=8 value=""><small>(It doesnt work. You can write it if you want, but it wont work anyway.　)</small></td></tr>
 <tr><td colspan=2>
 <small>
 <ul>
@@ -708,7 +705,7 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto){
   }
   updatelog();
 
-  echo "<html><head><META HTTP-EQUIV=\"refresh\" content=\"1;URL=".PHP_SELF2."\"></head>";
+  echo "<html><head><META HTTP-EQUIV=\"refresh\" content=\"1;URL=".PHP_SELF."?res=$resto\"></head>";
   echo "<body>$mes Switch Page</body></html>";
 }
 
