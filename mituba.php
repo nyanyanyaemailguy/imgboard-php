@@ -172,7 +172,7 @@ $dat.='<table cellpadding=1 cellspacing=1>
   <td>
     <input type=text name=sub size="35">
     '.(reCAPTCHA_SITE_KEY == '' ?
-    '<button type="submit">New topic</button>' :
+    '<button type="submit">New Post</button>' :
     '<button type="submit" class="g-recaptcha" data-sitekey="'.reCAPTCHA_SITE_KEY.'" data-callback="onSubmit" data-action="submit">post</button>').'
   </td></tr>
 <tr><td bgcolor=#eeaa88><b>comment</b></td><td><textarea name=com cols="48" rows="4" wrap=soft></textarea></td></tr>
